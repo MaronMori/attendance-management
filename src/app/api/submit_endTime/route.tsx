@@ -43,7 +43,7 @@ export async function POST(req: Request, res: Response) {
             if(checkBreakResult.length > 0 && checkBreakResult[0].breakEnd !== null){
                 updateSql = `
                 UPDATE attendance
-                SET endTime = ?, totalHours =  (TIMEDIFF(?, startTime) - TIMEDIFF(breakEnd, breakStart))
+                SET endTime = ?, totalHours =  TIMEDIFF(TIMEDIFF(?, startTime), TIMEDIFF(breakEnd, breakStart))
                 WHERE recordId = ? AND uId = ? AND date = ?;`
                 updateParams = [endTime, endTime, recordId, uId, date]
             }else {
