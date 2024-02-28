@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# 勤怠管理アプリケーション
+## テスト用のアカウント
+メールアドレス：q80jdo8rc9@sute.jp
+パスワード：password123
+## 使用した技術・ライブラリとなぜ使用したか
+### React
+Webアプリケーションを作成する際に世界で最も使用されているライブラリのため使用しました。また動的なアプリケーションの作成をしたかったので、JavaScriptで使用できるReactにしました。
+### Next.js
+Reactで作成したアプリケーションを簡単にページレンダリングさせることができるため使用しました。ReactをUdemyで学んだ時に同時に学習したのもきっかけです。
+### Firebase
+ユーザー認証の際に使用しました  
+今までの個人開発で使用した経験があるのと、比較的簡単に実装できるためFirebaseを利用しました。
+### Firestore
+ユーザーの名前を登録する際に使用しました。名前だけを保存するのでFirebaseのユーザーIDと連携しやすいのでMySQLではなくFirestoreを使用しました。
+### MySQL
+ユーザーの出勤情報をMySQLで管理しています。
+MySQLを使用した理由は、今までSQLを本格的に使用したことがなかったので、この機会に学習という意味合いで使用しました。
+### AWS RDS
+アプリケーションをデプロイして公開するので、AWS RDSでMySQLのデータベースを作成しました。　　
+AWSが広く使用されていて、学びたいと今まで思っていたのも理由です。
+### Tailwind
+CSSを簡単にさせるために使用しています。   
+Material UIとの併用の際に適応されない時があるのでそこで少し苦戦しました。
+### Material UI
+デザインを統一かさせてモダンなデザインにさせるために使用しました。
+## こだわったところ
+ユーザーが出勤や退勤ボタンを押したら、動的に出勤表がアップデートされるところです。　  
+またロード中にMUIのコンポーネントで視覚的にわかりやすくロードしていることを知らせるのもこだわりました。
+## 難しかったところ
+開発環境ではMySQLにアクセスできたのですが、buildして本番環境だと全くアクセスできなかったところにつまづきました。　　
+対象方として、エラーをそのまま検索にかけたら英語で同じようなエラーについてのページがあったのでそれを参考に修正しました。  
+　
+具体的な修正は、web packのデフォルトの設定でbuildする時にコードを最小化するのでasyncやawaitなどがうまく機能していない？のようなことでした。
+なのでweb packの設定でminimizeをfalseにしたら直りました。
+## 今後の課題
+このアプリケーションを使用する企業に合わせて、管理者用のアカウント作成機能を追加し、従業員が出勤などを間違えた時に修正できるようにしたいです。   
+今回のケースでは管理者アカウントが誰でも作成してしまうのを防ぐために、実装しませんでした。
